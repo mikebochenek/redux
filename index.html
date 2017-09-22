@@ -31,7 +31,7 @@
     <div class="section">
 
         <div id="dishlist" class="row">
-          <div id="staticdish" class="col s12 m4 nopadding">
+          <div id="staticdish" class="col s12 m4 nopadding hide">
             <div class="dish">
               <div><a href="https://appsto.re/ch/rFNRcb.i"><img src="" alt="" width='100%'></a></div>
               <div class="dishbox">
@@ -80,7 +80,8 @@
   }).done(function( data ) {
         for (var i = 0; i < data.length; i++) {
         	var newid = 'staticdish'+data[i].id;
-        	$('#staticdish').clone(true).attr('id', newid).prependTo('#dishlist'); 
+        	$('#staticdish').clone(true).attr('id', newid).appendTo('#dishlist'); 
+        	$('#'+newid).removeClass('hide');
         	$('#'+newid).find('.title').text(data[i].name);
         	$('#'+newid).find('.desc').text(data[i].dishDescription);
         	$('#'+newid).find('.location').text("Zürich");
