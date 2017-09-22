@@ -65,7 +65,10 @@
 
   $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
-       //alert("near bottom!");
+      if (fetchMoreDishes == false) {
+      	fetchMoreDishes = true;
+      	fetchDishes();
+      }
     }
   });
        
@@ -83,9 +86,9 @@
         	$('#'+newid).find('.location').text("Zürich");
         	$('#'+newid).find('.price').text('Fr. ' + data[i].price);
         	$('#'+newid).find('img').attr("src",data[i].url);
-        	lastDishID = data[i].id;
+        	lastDishID = data[i].id; //TODO not really using this yet..
         }
-        
+        fetchMoreDishes = false;
     });
   }
   
