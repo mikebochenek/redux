@@ -93,9 +93,15 @@
     $.ajax({
       url: "https://presto.bochenek.ch/api/restdishes/17,1",
       crossDomain: true,
-      success: function( result ) {
+      dataType: 'jsonp',
+      done: function( result ) {
+      	alert('done ajsx');
         $( "#testid" ).html( "<strong>" + result + "</strong> degrees" );
-      }
+      },
+      fail : function(xhr, textStatus, errorThrown) {
+        alert(xhr.responseText);
+        alert(textStatus);
+      },
     });
        
   });
