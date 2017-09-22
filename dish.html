@@ -1,58 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <title>The Holy Trinity (Fr. 39.00) at Brisket Southern BBQ & Bar Zürich Restaurant — Presto</title>
-    <meta name="description" content="All platters come with one side dish per person, bread, homemade pickles and sauces. Mac&#039;n&#039;Cheese and Sweet Potato Mash + 3 CHF, Chilli Cheese Fries + 5 CHF. Only locally sourced Swiss meats are used." />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Presto</title>
 
-    <meta property="og:url" content="http://www.presto.ch/dish/471" />
-    <meta property="og:title" content="The Holy Trinity (Fr. 39.00)" />
-    <meta property="og:description" content="All platters come with one side dish per person, bread, homemade pickles and sauces. Mac&#039;n&#039;Cheese and Sweet Potato Mash + 3 CHF, Chilli Cheese Fries + 5 CHF. Only locally sourced Swiss meats are used." />
-    <meta property="og:image" content="https://www.bochenek.ch/presto/1493555979880/the-holy-trinity-750.jpg" />
+  <link rel="icon" href="images/favicon.png" type="image/gif" sizes="32x32">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/dish.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+	
+  <nav class="white lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a href="http://www.presto.ch"><img src="images/presto_logo.svg" height="30"></a>
+    </div>
+  </nav>
 
-    <link href="/css/dish.css" rel="stylesheet">
-    <link rel="icon" href="/images/favicon.png" type="image/gif" sizes="32x32">
-	<link rel="amphtml" href="http://www.presto.ch/amp/dish/471" />
 
-  </head>
+  <div class="container">
+    <div class="section">
 
-  <body>
-
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="logo">
-          <a href="http://www.presto.ch"><img src="/images/presto_logo.svg" height="30"></a>
-        </div>
-      </div>
-    </nav>
-
-    <div>
-      <div class="container width">
-        <div class="row">
-          <div class="col-xs-12 nopadding">
+        <div id="dishlist" class="row">
+          <div id="staticdish" class="col s12 m4 nopadding hide">
             <div class="dish">
-              <div><a href="https://appsto.re/ch/rFNRcb.i"><img src="https://www.bochenek.ch/presto/1493555979880/the-holy-trinity-750.jpg" alt="The Holy Trinity (Fr. 39.00) – Brisket Southern BBQ & Bar, Zürich Restaurant — Presto" width='100%'></a></div>
+              <div><a href="https://appsto.re/ch/rFNRcb.i"><img src="" alt="" width='100%'></a></div>
               <div class="dishbox">
-                <div class="location">Zürich</div>
+                <div class="location"></div>
                 <div class="title-price">
-                  <div class="title">The Holy Trinity</div>
-                  <div class="price">Fr. 39.00</div>
+                  <div class="title"></div>
+                  <div class="price"></div>
                 </div>
-                <div class="desc">All platters come with one side dish per person, bread, homemade pickles and sauces. Mac&#039;n&#039;Cheese and Sweet Potato Mash + 3 CHF, Chilli Cheese Fries + 5 CHF. Only locally sourced Swiss meats are used.</div>
+                <div class="desc"></div>
+                <div id="restaurant"></div>
               </div>
             </div>
           </div>
-        </div>
+          
       </div>
+
     </div>
+    <br><br>
+  </div>
 
-	
-    <script src="/js/bootstrap.js"></script>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
 
+  <script>
+  document.addEventListener("DOMContentLoaded", function(event) { 
+  // code to run once DOM is loaded and ready
+  
+  var lastDishID = 0;
+  var fetchMoreDishes = false;
+
+  $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
+      if (fetchMoreDishes == false) {
+      	fetchMoreDishes = true;
+      	fetchDishes();
+      }
+    }
+  });
+       
+  function fetchDish(d, r) {
+  var flickerAPI = "http://presto.bochenek.ch/api/restdishes/"+r+",1"	
+  $.getJSON( flickerAPI, {
+    format: "json"
+  }).done(function( data ) {
+        for (var i = 0; i < data.length; i++) {
+          if (d == data[i].id) {
+        	$('#staticdish').removeClass('hide');
+        	$('#staticdish').find('.title').text(data[i].name);
+        	$('#staticdish').find('.desc').text(data[i].dishDescription);
+        	$('#staticdish').find('.location').text("Zürich");
+        	$('#staticdish').find('.price').text('Fr. ' + data[i].price);
+        	$('#staticdish').find('img').attr("src",data[i].url);
+        	$('#staticdish').find('#restaurant').text(data[i].restaurantName);
+          }
+        }
+    });
+  }
+  
+  fetchDish(492, 175);
+       
+  });
+  </script>
 
   </body>
 </html>
-
