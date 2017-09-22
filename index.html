@@ -34,7 +34,9 @@
         <div id="dishlist" class="row">
           <div id="staticdish" class="col s12 m4 nopadding">
             <div class="dish">
-              <div><a href="https://appsto.re/ch/rFNRcb.i"><img src="https://www.bochenek.ch/presto/1493555979880/the-holy-trinity-750.jpg" alt="The Holy Trinity (Fr. 39.00) – Brisket Southern BBQ & Bar, Zürich Restaurant — Presto" width='100%'></a></div>
+              <div><a href="https://appsto.re/ch/rFNRcb.i"><img 
+              	   src="https://www.bochenek.ch/presto/1493555979880/the-holy-trinity-750.jpg" 
+              	   alt="The Holy Trinity (Fr. 39.00) – Brisket Southern BBQ & Bar, Zürich Restaurant — Presto" width='100%'></a></div>
               <div class="dishbox">
                 <div class="location">Zürich</div>
                 <div class="title-price">
@@ -62,19 +64,16 @@
   // code to run once DOM is loaded and ready
        
 (function() {
-  var flickerAPI = "http://presto.bochenek.ch/api/restdishes/17,1";//"http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+  var flickerAPI = "http://presto.bochenek.ch/api/restdishes/17,1"
   $.getJSON( flickerAPI, {
-    tags: "mount rainier",
-    tagmode: "any",
     format: "json"
   }).done(function( data ) {
-    	//alert('flicker ajax yes ' + data);
         for (var i = 0; i < data.length; i++) {
         	var newid = 'staticdish'+data[i].id;
-        	$('#staticdish').clone(true).attr('id', newid).appendTo('#dishlist'); // append to where you want
-        	//alert(data[i].name);
+        	$('#staticdish').clone(true).attr('id', newid).appendTo('#dishlist'); 
         	$('#'+newid).find('.title').text(data[i].name);
         	$('#'+newid).find('.desc').text(data[i].desc);
+        	//$('#'+newid).find('.location').text(data[i].desc);
         	$('#'+newid).find('.price').text('Fr. ' + data[i].price);
         	$('#'+newid).find('img').attr("src",data[i].url);
         }
