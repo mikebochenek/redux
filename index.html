@@ -73,7 +73,10 @@
         	var newid = 'staticdish'+data[i].id;
         	$('#staticdish').clone(true).attr('id', newid).appendTo('#dishlist'); // append to where you want
         	//alert(data[i].name);
-        	$(newid + ' img').src = data.url;
+        	$('#'+newid).find('.title').text(data[i].name);
+        	$('#'+newid).find('.desc').text(data[i].desc);
+        	$('#'+newid).find('.price').text('Fr. ' + data[i].price);
+        	$('#'+newid).find('img').attr("src",data[i].url);
         }
         
     });
