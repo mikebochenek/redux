@@ -36,6 +36,7 @@
                 <hr/>
                 <a href="" id="restaurantWebsite"><img id="restaurantImage" src="" /><div id="restaurant"></div></a>
                 <a href="" id="restaurantMap"><img src="https://www.gstatic.com/images/branding/product/1x/maps_64dp.png" width="32"></a>
+                <a href="" id="resturantPhone"></a>
               </div>
             </div>
           </div>
@@ -75,6 +76,8 @@
           if (r == data[i].id) {
         	$('#restaurantMap').attr("href", "https://www.google.com/maps/search/?api=1&query="+data[i].latitude+","+data[i].longitude);
         	$('#restaurantWebsite').attr("href", data[i].website);
+        	$('#resturantPhone').attr("href", "tel:"+data[i].phone);
+        	$('#resturantPhone').text(data[i].phone);
           }
         }
     });
