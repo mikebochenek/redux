@@ -61,8 +61,8 @@
   // code to run once DOM is loaded and ready
        
 (function() {
-  var flickerAPI = "http://presto.bochenek.ch/api/restdishes/175,1"	
-  //var flickerAPI = "http://presto.bochenek.ch/api/recommend?id=1&longitude=47.3921582785799&latitude=8.512902108369&minPrice=0&maxPrice=150&maxDistance=20.0&openNow=false";  
+  //var flickerAPI = "http://presto.bochenek.ch/api/restdishes/175,1"	
+  var flickerAPI = "http://presto.bochenek.ch/api/recommend?id=1&longitude=47.3921582785799&latitude=8.512902108369&minPrice=0&maxPrice=150&maxDistance=20.0&openNow=false&maxDishes=20";  
   $.getJSON( flickerAPI, {
     format: "json"
   }).done(function( data ) {
