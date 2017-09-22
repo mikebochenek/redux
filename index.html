@@ -91,7 +91,7 @@
   // code to run once DOM is loaded and ready
     alert('done and done');
     $.ajax({
-      url: "https://presto.bochenek.ch/api/restdishes/17,1",
+      url: "http://presto.bochenek.ch/api/restdishes/17,1",
       crossDomain: true,
       dataType: 'jsonp',
       done: function( result ) {
@@ -105,20 +105,20 @@
     });
        
 (function() {
-  var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+  var flickerAPI = "http://presto.bochenek.ch/api/restdishes/17,1";//"http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
   $.getJSON( flickerAPI, {
     tags: "mount rainier",
     tagmode: "any",
     format: "json"
   })
     .done(function( data ) {
-    	alert('flicker ajax yes');
-      $.each( data.items, function( i, item ) {
+    	alert('flicker ajax yes ' + data);
+/*      $.each( data.items, function( i, item ) {
         $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
         if ( i === 3 ) {
           return false;
         }
-      });
+      });*/
     });
 })();
        
