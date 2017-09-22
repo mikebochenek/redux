@@ -52,17 +52,15 @@
   document.addEventListener("DOMContentLoaded", function(event) { 
   // code to run once DOM is loaded and ready
   
-  var lastDishID = 0;
-  var fetchMoreDishes = false;
-
-  $(window).scroll(function() {
-    if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
-      if (fetchMoreDishes == false) {
-      	fetchMoreDishes = true;
-      	fetchDishes();
-      }
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
     }
-  });
+    else{
+       return decodeURI(results[1]) || 0;
+    }
+  }
        
   function fetchDish(d, r) {
   var flickerAPI = "http://presto.bochenek.ch/api/restdishes/"+r+",1"	
@@ -83,7 +81,8 @@
     });
   }
   
-  fetchDish(492, 175);
+  //fetchDish(492, 175);
+  fetchDish($.urlParam('dishID'), $.urlParam('restID'));
        
   });
   </script>
