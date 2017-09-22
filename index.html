@@ -89,25 +89,21 @@
   <script>
   document.addEventListener("DOMContentLoaded", function(event) { 
   // code to run once DOM is loaded and ready
+       
 (function() {
   var flickerAPI = "http://presto.bochenek.ch/api/restdishes/17,1";//"http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
   $.getJSON( flickerAPI, {
+    tags: "mount rainier",
+    tagmode: "any",
     format: "json"
-  })
-    .done(function( data ) {
+  }).done(function( data ) {
     	alert('flicker ajax yes ' + data);
         for (var i = 0; i < data.length; i++) {
         	alert(data[i]);
         }
         
-/*      $.each( data.items, function( i, item ) {
-        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-        if ( i === 3 ) {
-          return false;
-        }
-      });*/
     });
-})();
+  })();
        
   });
   </script>
