@@ -74,7 +74,7 @@
         	$('#staticdish').find('.desc').text(data[i].dishDescription);
         	$('#staticdish').find('.location').text("Zürich");
         	$('#staticdish').find('.price').text('Fr. ' + data[i].price);
-        	$('#staticdish').find('img').attr("src",data[i].url);
+        	$('#staticdish').find('img').attr("src",$.urlParam('url'));
         	$('#staticdish').find('#restaurant').text(data[i].restaurantName);
           }
         }
