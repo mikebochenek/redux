@@ -113,6 +113,10 @@
   })
     .done(function( data ) {
     	alert('flicker ajax yes ' + data);
+        for (var i = 0; i < data.length; i++) {
+        	alert(data[i]);
+        }
+        
 /*      $.each( data.items, function( i, item ) {
         $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
         if ( i === 3 ) {
