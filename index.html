@@ -34,16 +34,14 @@
         <div id="dishlist" class="row">
           <div id="staticdish" class="col s12 m4 nopadding">
             <div class="dish">
-              <div><a href="https://appsto.re/ch/rFNRcb.i"><img 
-              	   src="https://www.bochenek.ch/presto/1493555979880/the-holy-trinity-750.jpg" 
-              	   alt="The Holy Trinity (Fr. 39.00) – Brisket Southern BBQ & Bar, Zürich Restaurant — Presto" width='100%'></a></div>
+              <div><a href="https://appsto.re/ch/rFNRcb.i"><img src="" alt="" width='100%'></a></div>
               <div class="dishbox">
-                <div class="location">Zürich</div>
+                <div class="location"></div>
                 <div class="title-price">
-                  <div class="title">The Holy Trinity</div>
-                  <div class="price">Fr. 39.00</div>
+                  <div class="title"></div>
+                  <div class="price"></div>
                 </div>
-                <div class="desc">All platters come with one side dish per person, bread, homemade pickles and sauces. Mac&#039;n&#039;Cheese and Sweet Potato Mash + 3 CHF, Chilli Cheese Fries + 5 CHF. Only locally sourced Swiss meats are used.</div>
+                <div class="desc"></div>
               </div>
             </div>
           </div>
@@ -64,16 +62,16 @@
   // code to run once DOM is loaded and ready
        
 (function() {
-  var flickerAPI = "http://presto.bochenek.ch/api/restdishes/17,1"
+  var flickerAPI = "http://presto.bochenek.ch/api/restdishes/17,1"; //https://presto.bochenek.ch/api/recommend?id=1&longitude=47.3921582785799&latitude=8.512902108369&minPrice=0&maxPrice=150&maxDistance=20.0&openNow=false
   $.getJSON( flickerAPI, {
     format: "json"
   }).done(function( data ) {
         for (var i = 0; i < data.length; i++) {
         	var newid = 'staticdish'+data[i].id;
-        	$('#staticdish').clone(true).attr('id', newid).appendTo('#dishlist'); 
+        	$('#staticdish').clone(true).attr('id', newid).prependTo('#dishlist'); 
         	$('#'+newid).find('.title').text(data[i].name);
-        	$('#'+newid).find('.desc').text(data[i].desc);
-        	//$('#'+newid).find('.location').text(data[i].desc);
+        	$('#'+newid).find('.desc').text(data[i].dishDescription);
+        	$('#'+newid).find('.location').text("Zürich");
         	$('#'+newid).find('.price').text('Fr. ' + data[i].price);
         	$('#'+newid).find('img').attr("src",data[i].url);
         }
