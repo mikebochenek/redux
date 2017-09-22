@@ -59,6 +59,15 @@
   <script>
   document.addEventListener("DOMContentLoaded", function(event) { 
   // code to run once DOM is loaded and ready
+  
+  var lastDishID = 0;
+  var fetchMoreDishes = false;
+
+  $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
+       //alert("near bottom!");
+    }
+  });
        
   function fetchDishes() {
   //var flickerAPI = "http://presto.bochenek.ch/api/restdishes/175,1"	
@@ -74,6 +83,7 @@
         	$('#'+newid).find('.location').text("Zürich");
         	$('#'+newid).find('.price').text('Fr. ' + data[i].price);
         	$('#'+newid).find('img').attr("src",data[i].url);
+        	lastDishID = data[i].id;
         }
         
     });
