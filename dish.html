@@ -32,10 +32,13 @@
                   <div class="price"></div>
                 </div>
                 <div class="desc"></div>
-                <div><b>Ingredients: </b><div id="ingredients"></div></div>
+                <div><b>Ingredients: </b><small><div id="ingredients"></div></small></div>
                 <hr/>
                 <a href="" id="restaurantWebsite"><img id="restaurantImage" src="" /><div id="restaurant"></div></a>
+                <hr/>
                 <a href="" id="restaurantMap"><img src="https://www.gstatic.com/images/branding/product/1x/maps_64dp.png" width="32"></a>
+                <div id="restaurantAddress"></div>
+                <hr/>
                 <a href="" id="resturantPhone"></a>
               </div>
             </div>
@@ -76,8 +79,9 @@
           if (r == data[i].id) {
         	$('#restaurantMap').attr("href", "https://www.google.com/maps/search/?api=1&query="+data[i].latitude+","+data[i].longitude);
         	$('#restaurantWebsite').attr("href", data[i].website);
-        	$('#resturantPhone').attr("href", "tel:"+data[i].phone);
+        	$('#resturantPhone').attr("href", data[i].phone);
         	$('#resturantPhone').text(data[i].phone);
+        	$('#restaurantAddress').text(data[i].address);
           }
         }
     });
@@ -94,7 +98,7 @@
         	$('#staticdish').find('.title').text(data[i].name);
         	$('#staticdish').find('.desc').text(data[i].dishDescription);
         	$('#staticdish').find('.location').text("Zürich");
-        	$('#staticdish').find('#ingredients').text(data[i].ingredients);
+        	$('#staticdish').find('#ingredients').text(data[i].ingredients.toString().replace(",", ", "));
         	$('#staticdish').find('.price').text('Fr. ' + data[i].price);
         	$('#staticdish').find('#dishImage').attr("src", data[i].url_large);
         	$('#staticdish').find('#restaurantImage').attr("src", data[i].restaurantUrl);
