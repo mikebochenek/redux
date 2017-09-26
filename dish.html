@@ -97,7 +97,7 @@
         	$('#staticdish').removeClass('hide');
         	$('#staticdish').find('.title').text(data[i].name);
         	$('#staticdish').find('.desc').text(data[i].dishDescription);
-        	$('#staticdish').find('.location').text("Zürich");
+        	$('#staticdish').find('.location').text(data[i].restaurantLocation);
         	$('#staticdish').find('#ingredients').text(data[i].ingredients.toString().replace(",", ", "));
         	$('#staticdish').find('.price').text('Fr. ' + data[i].price);
         	$('#staticdish').find('#dishImage').attr("src", data[i].url_large);
