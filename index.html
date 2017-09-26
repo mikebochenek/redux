@@ -100,7 +100,7 @@
         	$('#'+newid).find('.title').text(data[i].name);
         	$('#'+newid).find('.desc').text(data[i].dishDescription);
         	$('#'+newid).find('.location').text(data[i].restaurantLocation);
-        	$('#'+newid).find('.price').text('Fr. ' + data[i].price);
+        	$('#'+newid).find('.price').text((data[i].restaurantLocation.indexOf('Switzerland') !== -1 ? 'Fr. ' : '$') + data[i].price);
         	$('#'+newid).find('img').attr("src",data[i].url);
         	$('#'+newid).find('a').attr("href","dish.html?dishID="+data[i].id+"&restID="+data[i].restaurantID); //not needed +"&url="+data[i].url
         	lastDishID = data[i].id; //TODO not really using this yet..

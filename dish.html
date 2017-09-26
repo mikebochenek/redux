@@ -99,10 +99,11 @@
         	$('#staticdish').find('.desc').text(data[i].dishDescription);
         	$('#staticdish').find('.location').text(data[i].restaurantLocation);
         	$('#staticdish').find('#ingredients').text(data[i].ingredients.toString().replace(",", ", "));
-        	$('#staticdish').find('.price').text('Fr. ' + data[i].price);
+        	$('#staticdish').find('.price').text((data[i].restaurantLocation.indexOf('Switzerland') !== -1 ? 'Fr. ' : '$') + data[i].price);
         	$('#staticdish').find('#dishImage').attr("src", data[i].url_large);
         	$('#staticdish').find('#restaurantImage').attr("src", data[i].restaurantUrl);
         	$('#staticdish').find('#restaurant').text(data[i].restaurantName);
+        	alert(data[i].restaurantLocation.contains('Switzerland'));
           }
         }
     });
