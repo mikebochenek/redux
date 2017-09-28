@@ -22,7 +22,7 @@
     <div class="section">
 
         <div id="dishlist" class="row">
-          <div id="staticdish" class="col s12 m4 nopadding hide">
+          <div id="staticdish" class="col s12 nopadding hide">
             <div class="dish">
               <div><a href="https://appsto.re/ch/rFNRcb.i"><img id="dishImage" src="" alt="" width='100%'></a></div>
               <div class="dishbox">
@@ -40,6 +40,8 @@
                 <div id="restaurantAddress"></div>
                 <hr/>
                 <a href="" id="resturantPhone"></a>
+                <hr/>
+                <a href="" id="resturantBooking">Create Online Reservation with <img src="http://brand.opentable.com/wp-content/themes/opentable/assets/images/otlogoreg.png" height="80px"></a>
               </div>
             </div>
           </div>
@@ -82,6 +84,17 @@
         	$('#resturantPhone').attr("href", data[i].phone);
         	$('#resturantPhone').text(data[i].phone);
         	$('#restaurantAddress').text(data[i].address);
+        	
+        	if (r == 176 || r == 177 || r == 179) {
+        	  var rid = 0;
+        	  if (r == 176) { rid = 21307; }
+        	  if (r == 177) { rid = 5970; }
+        	  if (r == 179) { rid = 171172; }
+        	  $('#resturantBooking').attr("href", "http://www.opentable.com/restaurant/profile/"+rid+"&ref=14213");
+        	} else {
+        	  $('#resturantBooking').hide();
+        	}
+        	
           }
         }
     });
@@ -103,7 +116,7 @@
         	$('#staticdish').find('#dishImage').attr("src", data[i].url_large);
         	$('#staticdish').find('#restaurantImage').attr("src", data[i].restaurantUrl);
         	$('#staticdish').find('#restaurant').text(data[i].restaurantName);
-        	alert(data[i].restaurantLocation.contains('Switzerland'));
+        	//alert(data[i].restaurantLocation.contains('Switzerland'));
           }
         }
     });
