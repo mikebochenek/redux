@@ -85,11 +85,15 @@
         	$('#resturantPhone').text(data[i].phone);
         	$('#restaurantAddress').text(data[i].address);
         	
-        	if (r == 176 || r == 177 || r == 179) {
+        	if (r == 176 || r == 177 || r == 179 || r == 180 || r == 181 || r == 182 || r == 183) {
         	  var rid = 0;
         	  if (r == 176) { rid = 21307; }
         	  if (r == 177) { rid = 5970; }
         	  if (r == 179) { rid = 171172; }
+        	  if (r == 180) { rid = 16069; }
+        	  if (r == 181) { rid = 112030; }
+        	  if (r == 182) { rid = 112777; }
+        	  if (r == 183) { rid = 54079; }
         	  $('#resturantBooking').attr("href", "http://www.opentable.com/restaurant/profile/"+rid+"&ref=14213");
         	} else {
         	  $('#resturantBooking').hide();
